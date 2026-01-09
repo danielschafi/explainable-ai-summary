@@ -1,0 +1,372 @@
+\documentclass[10pt,a4paper, english]{article}
+
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+\usepackage{hyperref}
+
+% hyperlink colors
+\hypersetup{
+         colorlinks,
+         citecolor=black,
+         filecolor=black,
+         linkcolor=black,
+         urlcolor=black,
+         pdfborder=0 0 0
+}
+
+\usepackage{xcolor}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\usepackage[left=1cm,right=1cm,top=2cm,bottom=1.5cm]{geometry}
+\usepackage[skip=2pt]{caption} % example skip set to 2pt captions close to table figure etc
+
+\usepackage{fancyhdr}
+
+\usepackage{multicol}
+\usepackage{float}
+
+\usepackage{enumitem}
+\setlist{topsep=0.4em, itemsep=0.1em}
+
+\mdfsetup{% 
+backgroundcolor=gray!20, 
+hidealllines=true,
+roundcorner=2.5pt}
+
+\author{Daniel Schafhäutle}
+
+\fancyhf{}
+
+\fancyhead[C]{Explainable AI CDS120}
+
+\fancyfoot[L]{\today}
+\fancyfoot[C]{Daniel Schafhäutle}
+\fancyfoot[R]{\thepage}
+
+\pagestyle{fancy}
+
+
+% silbentrennung stärke
+\usepackage{microtype}
+\usepackage{mwe}
+\hyphenpenalty=-9000
+\exhyphenpenalty=-9000
+
+
+
+
+
+% ===============================
+% Some Math Shortcuts
+% ===============================
+%\boldone for a \mathbb 1 (since numbers are not supported) Indicator
+\newcommand*{\boldone}{\text{\usefont{U}{bbold}{m}{n}1}}
+
+\providecommand{\iprod}[2]{\ensuremath{\left\langle #1,\,#2  \right\rangle}}
+\providecommand{\mnorm}[1]{\ensuremath{\left\lvert#1\right\rvert}}
+\providecommand{\norm}[1]{\ensuremath{\left\lVert#1\right\rVert }}
+
+
+%some math shortcuts
+\newcommand{\argmax}[1]{\mathop{\arg\max}\limits_{#1}}
+\newcommand{\argmin}[1]{\mathop{\arg\min}\limits_{#1}}
+\newcommand{\maxover}[1]{\mathop{\max}\limits_{#1}}
+\newcommand{\minover}[1]{\mathop{\min}\limits_{#1}}
+\newcommand{\infover}[1]{\mathop{\inf}\limits_{#1}}
+
+% Define \E with an optional subscript and mandatory content
+\newcommand{\E}[1]{\mathbb{E}\left[ #1 \right]}
+
+% Expecation with respect to
+\newcommand{\Ewrp}[2]{\mathbb{E}_{#1}\left[ #2 \right]}
+
+
+
+% Left-right bracket
+\newcommand{\lr}[1]{\left (#1\right)}
+
+% Left-right square bracket
+\newcommand{\lrs}[1]{\left [#1 \right]}
+
+% Left-right curly bracket
+\newcommand{\lrc}[1]{\left \{#1\right\}}
+
+% Left-right absolute value
+\newcommand{\lra}[1]{\left |#1\right|}
+
+% Left-right upper value
+\newcommand{\lru}[1]{\left \lceil#1\right\rceil}
+
+% Scalar product
+\newcommand{\vp}[2]{\left \langle #1 , #2 \right \rangle}
+
+% The real numbers
+\newcommand{\R}{\mathbb R}
+
+% The natural numbers
+\newcommand{\N}{\mathbb N}
+
+
+
+% Indicator function with an optional argument
+\NewDocumentCommand{\1}{o}{\mathds 1{\IfValueT{#1}{\lr{#1}}}}
+
+% Probability function
+\let\P\undefined
+\NewDocumentCommand{\P}{o}{\mathbb P{\IfValueT{#1}{\lr{#1}}}}
+
+% A hypothesis space
+\newcommand{\HH}{\mathcal H}
+
+% A sample space
+\newcommand{\XX}{\mathcal{X}}
+
+% A label space
+\newcommand{\YY}{\mathcal{Y}}
+
+% A nicer emptyset symbol
+\let\emptyset\varnothing
+
+% Sign operator
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\sgn}[1]{\sign\lr{#1}}
+
+% KL operator
+\DeclareMathOperator{\KL}{KL}
+
+% kl operator
+\DeclareMathOperator{\kl}{kl}
+
+% The entropy
+\let\H\relax
+\DeclareMathOperator{\H}{H}
+
+% Majority vote
+\DeclareMathOperator{\MV}{MV}
+
+% Variance
+\DeclareMathOperator{\V}{Var}
+\NewDocumentCommand{\Var}{o}{\V\IfValueT{#1}{\lrs{#1}}}
+
+% VC
+\DeclareMathOperator{\VC}{VC}
+
+% VC-dimension
+\newcommand{\dVC}{d_{\VC}}
+
+% FAT ...
+\DeclareMathOperator{\FAT}{FAT}
+\newcommand{\dfat}{d_{\FAT}}
+\newcommand{\lfat}{\ell_{\FAT}}
+\newcommand{\Lfat}{L_{\FAT}}
+\newcommand{\hatLfat}{\hat L_{\FAT}}
+
+% Distance
+\DeclareMathOperator{\dist}{dist}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Reference commands  %
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Figref}[1]{Figure~\ref{#1}}  % Figure reference
+\newcommand{\Secref}[1]{Section~\ref{#1}}  % Section reference
+\newcommand{\Eqref}[1]{Equation~(\ref{#1})}  % Equation reference
+\newcommand{\Algoref}[1]{Algorithm~\ref{#1}}  % Algorithm reference
+\newcommand{\Defref}[1]{Definition~\ref{#1}}    % Definition reference
+\newcommand{\Thmref}[1]{Theorem~\ref{#1}}   % Theorem reference
+\newcommand{\Lemref}[1]{Lemma~\ref{#1}}   % Lemma reference
+\newcommand{\Cororef}[1]{Corollary~\ref{#1}}    % Corollary reference
+\newcommand{\Propref}[1]{Proposition~\ref{#1}}  % Proposition reference
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition, Theorems, proof etc. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}{Definition}[section]  % [section]: recount after each section
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}            % [theorem]: same counter as theorem
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{principle}[theorem]{Principle}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+% \begin{proof}\end{proof} already included in package amsthm
+
+\newcommand{\KLDiv}[2]{D_{\mathrm{KL}} \left( {#1} \middle\| {#2} \right)}
+
+\newcommand{\avgsum}[3]{\frac{1}{ {#3} } \sum_{ {#1}={#2} }^{ {#3} }}
+
+
+% =================
+% CODE
+% =================
+
+\usepackage{xcolor} % For a colorfull presentation
+\usepackage{listings} % For presenting code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{subcaption}
+% Definition of a style for code, matter of taste
+\lstdefinestyle{mystyle}{
+language=Python,
+basicstyle=\ttfamily\footnotesize,
+backgroundcolor=\color[HTML]{F7F7F7},
+rulecolor=\color[HTML]{EEEEEE},
+identifierstyle=\color[HTML]{24292E},
+emphstyle=\color[HTML]{005CC5},
+keywordstyle=\color[HTML]{D73A49},
+commentstyle=\color[HTML]{6A737D},
+stringstyle=\color[HTML]{032F62},
+emph={@property,self,range,True,False},
+morekeywords={super,with,as,lambda},
+literate=%
+{+}{{{\color[HTML]{D73A49}+}}}1
+{-}{{{\color[HTML]{D73A49}-}}}1
+{*}{{{\color[HTML]{D73A49}*}}}1
+{/}{{{\color[HTML]{D73A49}/}}}1
+{=}{{{\color[HTML]{D73A49}=}}}1
+{/=}{{{\color[HTML]{D73A49}=}}}1,
+breakatwhitespace=false,
+breaklines=true,
+captionpos=b,
+keepspaces=true,
+numbers=none,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=4,
+frame=single,
+}
+\lstset{style=mystyle}
+
+\usepackage{minted}
+\usemintedstyle{colorful}
+\usepackage{xcolor} % to access the named colour LightGray
+\definecolor{LightGray}{gray}{0.95}
+
+\usepackage{hyperref}
+
+% hyperlink colors
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black,
+	pdfborder=0 0 0
+}
+
+\usepackage{xcolor}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\usepackage[left=1cm,right=1cm,top=2cm,bottom=1.5cm]{geometry}
+\usepackage[skip=2pt]{caption} % example skip set to 2pt captions close to table figure etc
+
+\usepackage{fancyhdr}
+
+\usepackage{multicol}
+\usepackage{float}
+
+\usepackage{enumitem}
+\setlist{topsep=0.4em, itemsep=0.1em}
+
+\mdfsetup{% 
+	backgroundcolor=gray!20,
+	hidealllines=true,
+	roundcorner=2.5pt}
+
+\author{Daniel Schafhäutle}
+
+\fancyhf{}
+
+\fancyhead[C]{Explainable AI CDS120}
+
+\fancyfoot[L]{\today}
+\fancyfoot[C]{Daniel Schafhäutle}
+\fancyfoot[R]{\thepage}
+
+\pagestyle{fancy}
+
+
+% silbentrennung stärke
+\usepackage{microtype}
+\usepackage{mwe}
+\hyphenpenalty=-9000
+\exhyphenpenalty=-9000
+
+
+
+
+
+% =================
+% CODE
+% =================
+
+\usepackage{xcolor} % For a colorfull presentation
+\usepackage{listings} % For presenting code
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{subcaption}
+% Definition of a style for code, matter of taste
+\lstdefinestyle{mystyle}{
+language=Python,
+basicstyle=\ttfamily\footnotesize,
+backgroundcolor=\color[HTML]{F7F7F7},
+rulecolor=\color[HTML]{EEEEEE},
+identifierstyle=\color[HTML]{24292E},
+emphstyle=\color[HTML]{005CC5},
+keywordstyle=\color[HTML]{D73A49},
+commentstyle=\color[HTML]{6A737D},
+stringstyle=\color[HTML]{032F62},
+emph={@property,self,range,True,False},
+morekeywords={super,with,as,lambda},
+literate=%
+	{+}{{{\color[HTML]{D73A49}+}}}1
+{-}{{{\color[HTML]{D73A49}-}}}1
+{*}{{{\color[HTML]{D73A49}*}}}1
+{/}{{{\color[HTML]{D73A49}/}}}1
+{=}{{{\color[HTML]{D73A49}=}}}1
+{/=}{{{\color[HTML]{D73A49}=}}}1,
+breakatwhitespace=false,
+breaklines=true,
+captionpos=b,
+keepspaces=true,
+numbers=none,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=4,
+frame=single,
+}
+\lstset{style=mystyle}
+
+\usepackage{minted}
+\usemintedstyle{colorful}
+\usepackage{xcolor} % to access the named colour LightGray
+\definecolor{LightGray}{gray}{0.95}
+
+\begin{document}
+\tableofcontents
+\twocolumn
+
+\input{01_intro.tex}
+\input{02_interpretable_models.tex}
+
+
+\end{document}
+
+
+
+

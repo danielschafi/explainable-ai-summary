@@ -1,0 +1,103 @@
+\section{Interpretable Models}
+Using inherently interpretable algorithms.
+\subsection{Linear Regression}
+Predicts target as weighted sum of inputs.
+\begin{equation}
+	y = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p + \epsilon
+	\label{eq:linear_regression}
+\end{equation}
+Estimated usually by Ordinary Least Squares (OLS)
+\begin{equation}
+	\hat \beta = \argmin{\beta_0, \dots , \beta_p} \sum_{i=1}^n \lr{y^{(i)} - \lr{\beta_0 + \sum_{j=1}^p}\beta_jx_j^{(i)}}²
+	\label{eq:OLS}
+\end{equation}
+Each weight represents the effect of one feature, holding others constant.
+We can compute \textbf{confidence intervals} for each coefficient.
+\paragraph{Regression Output}
+\begin{table}[H]
+	\caption{Regression Output}\label{tab:regression_output}
+	\begin{center}
+		\begin{tabular}{l|r|r|r}
+			\hline
+			Feature     & Weight$\hat \beta_j$ & SE  & $|t|$ \\
+			\hline
+			Temperature & 110.7                & 7.0 & 15.7  \\
+			Humidity    & -17.4                & 3.2 & 5.5   \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\begin{itemize}
+	\item Weight: Estimated influence of $x_i$ over the outcome $y$
+	\item SE (Standard Error): Uncertainty (variance) of the estimated coefficient
+	\item $|t|$ t-statistic: Strength of evidence that $\beta_j \neq 0$
+\end{itemize}
+\begin{equation}
+	t_{\beta_j} = \frac{\hat \beta_j}{SE(\hat \beta_j)}
+	\label{eq:t-statistic}
+\end{equation}
+Large, certain weights = important features. Small or uncertain weights = weak evidence. Features wit highest $|t|$ values are most significant.
+
+\begin{itemize}
+	\item Effect Plot: $effect_j^i = \beta_j \cdot x_j^i$ Contribution of feature j to prediction for instance i.
+	\item Different encodings for variables.
+\end{itemize}
+
+\subsection{Shrinkage Models}
+Using models that keep only the relevant features helps with interpretability.
+
+\subsubsection{Lasso - Least Absolute Shrinkage and Selection Operator}
+\begin{itemize}
+	\item Adds L1 Norm, Performs feature selection, regularization
+	\item Enforces sparsity in Linear model
+\end{itemize}
+\begin{equation}
+	\underset{\beta}{min} \frac{1}{n}\sum:{i=1}^n\lr{y^{(i)}-x_i^T \beta }² + \lambda \norm{\beta}_1
+	\label{eq:LASSO-L1}
+\end{equation}
+As $\lambda$ gets increased, only the most important features remain. This increases interpretability.
+
+\paragraph{About Linear Regression}
+\begin{itemize}
+	\item Perfectly understood
+	\item Only captures linear relationships
+	\item Ignores feature interactions, must be added manually ($x_1x_2, x²$ etc.)
+	\item Lower accuracy compared to more flexible Models.
+\end{itemize}
+
+
+\subsection{Logistic Regression}
+\begin{itemize}
+	\item Classification problems with two classes.
+	\item Models Probability of one class given the features.
+	\item Extension of linear regresion for classification.
+	\item Uses the output of a linear regression and maps it to a Probability.
+\end{itemize}
+\paragraph{Logistic / Sigmoid function}
+\begin{equation}
+	logistic\lr{\eta} = \frac{1}{1+ \exp{-\eta}}
+	\label{eq:Log-sigmoid-fun}
+\end{equation}
+
+\paragraph{Logistic Model}
+\begin{equation}
+	P\lr{y^{(i)} = 1}  = \frac{1}{1 + \exp (- (\beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_p x_p^{(i)}))}
+	\label{eq:logisticregression}
+\end{equation}
+\begin{itemize}
+	\item Linear predictor is transformed via the logistic function.
+	\item Coeffictions do not act linearly on the probability. Interpretation is happens on the log-odds scale.
+	\item A one unit increase in $x_j$ multiplies the odds of $y=1$ vs. $y=0$ by a factor of $\exp(\beta_j)$
+	\item Predicts probabilities, which alows for better decision making. Pred with 99\% probability is more confident than one with 51\%.
+	\item Relationships between features and outcomes remain transparent.
+\end{itemize}
+
+
+\subsection{Generalized Linear Models}
+Linear Regression
+
+
+
+
+
+\subsection{Generalized Additive Models}

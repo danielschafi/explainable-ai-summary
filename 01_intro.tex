@@ -1,0 +1,36 @@
+\section{Introduction to Explainable AI}
+\subsection{Taxonomy}
+By Interpretability Type
+\begin{itemize}
+	\item Intrinsic Interpretability
+	\item Post-hoc Interpretability
+\end{itemize}
+By Result Type
+\begin{itemize}
+	\item Feature summary statistics
+	\item Feature summary visualizations
+	\item Model internals (weights, tree structure)
+	\item Data Point base (counterfactuals, prototypes)
+	\item Intrinsic surrogates
+\end{itemize}
+\subsection{Global vs Local interpretability}
+\paragraph{Global Interpretability}
+How well the trainied model makes predictions overall.
+Which features are important for predictions overall.
+Feature interactions.
+\paragraph{Local Interpretability}
+Why the model made a particular prediction for one instance
+Locally a complex model may behave in a simple way.
+
+\subsection{Making explanations}
+When making explanations, we need to keep the human factor in mind.
+They should be
+\begin{itemize}
+	\item Contrastive: Provide “why this, not that?” with a clear reference point.
+	\item Selected: Limit to the top 1–3 drivers.
+	\item Social: Match audience knowledge and context.
+	\item Abnormality: Highlight unusual but influential factors.
+	\item Fidelity: Stay faithful to model behavior (and reality when possible).
+	\item Beliefs: Acknowledge/prioritize known priors or add constraints if needed.
+	\item Generality: Indicate coverage/support when relevant.
+\end{itemize}
