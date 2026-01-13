@@ -35,3 +35,13 @@
 \contentsline {subsection}{\numberline {4.1}Model Agnostic}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Examples Based}{5}{subsection.4.2}%
 \contentsline {paragraph}{Types of examples}{5}{section*.19}%
+\contentsline {section}{\numberline {5}Local Model Agnostic}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}ICE - Individual Conditional Expectation }{5}{subsection.5.1}%
+\contentsline {paragraph}{ICE-Plot}{5}{figure.caption.21}%
+\contentsline {paragraph}{Centered ICE-Plot}{5}{section*.22}%
+\contentsline {paragraph}{Derivative ICE-Plot}{5}{section*.24}%
+\contentsline {subsection}{\numberline {5.2}LIME - Local Interpretable Model-Agnostic Explanations}{5}{subsection.5.2}%
+\contentsline {paragraph}{LIME}{6}{section*.26}%
+\contentsline {paragraph}{LIME Algorithm}{6}{section*.27}%
+\contentsline {paragraph}{Notes}{6}{section*.28}%
+\contentsline {subsection}{\numberline {5.3}Shapley values \& SHAP}{6}{subsection.5.3}%

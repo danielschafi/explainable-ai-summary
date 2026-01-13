@@ -1,0 +1,95 @@
+\section{Local Model Agnostic}
+
+\subsection{ICE - Individual Conditional Expectation }
+\textit{How a samples prediction changes, when all but one features are fixed and then the remaining feature
+	gets replace by values from a grid}
+\begin{enumerate}
+	\item Keep all but one features fixed.
+	\item Replace remaining feature with values from a grid of reasonable values for that feature.
+	\item Record how the prediction changes while varying that feature.
+	\item Plot the change. With $y$ axis, the predicted value, $x$ axis the values of the feature.
+\end{enumerate}
+
+\begin{itemize}
+	\item Shows how the instances prediction changes when a feature changes.
+	\item Visualizes the dependence of the prediction on a feature for each instance separately
+\end{itemize}
+\paragraph{ICE-Plot}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.95\linewidth]{images/fig-ice-bike-1.png}
+	\end{center}
+	\caption{ICE-Plot}\label{fig:ICE-Plot}
+\end{figure}
+\paragraph{Centered ICE-Plot}
+Since it is hard to see sometimes, if the individual curves are different from one another, they are usually centered.
+To center the curves subtract the intercept of each curve. They start at different intercepts, because the data points are different (duh).
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.45\linewidth]{images/ice-bike-centered-1.png}
+	\end{center}
+	\caption{Centered-ICE Plot}\label{fig:ICE-Centerd}
+\end{figure}
+Connected to ICE; A Partial Dependence Plots is just the average of all ICE curves.
+Often, when the  ICE curves are too crowded,
+
+\paragraph{Derivative ICE-Plot}
+Instead of the raw data, plots the derivative of each ICE-curve.
+\begin{itemize}
+	\item Show where and how strongly predictions change
+	\item Derivatives tell in which direction change occurs.
+	\item Makes it easy to spot in which ranges the predictions change.
+	\item Spot non-linearity (linear relationship is flat line)
+\end{itemize}
+
+
+\subsection{LIME - Local Interpretable Model-Agnostic Explanations}
+\textit{Explain model predictions by using local surrogate models.}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{images/fig-lime-fitting-1.png}
+	\end{center}
+	\caption{LIME explanations  $a \to b \to c \to d$ \\ Background is the black-box models predictions}\label{fig:Lime-Model-Fitting}
+\end{figure}
+
+\paragraph{LIME}
+\begin{equation}
+	\text{explanation}(x) = \argmin{g \in G} L \lr{\hat f, g, \pi_x} + \Omega(g)
+	\label{eq:LIME-Explanation}
+\end{equation}
+where
+\begin{itemize}
+	\item explanation is the model g, that minimizes the Loss.
+	\item Loss measures how close the explanation model $g$ is to the original $hat f $.
+	\item $\pi_x$: Defines how large the neighborhood around instance x is, that we consider for the explanations.
+	      This is done by weighting the points in the dataset using an exponential kernel.
+	\item $\Omega(g)$: Complexity of the model. Has to be set by the user. LIME only optimizes the loss part.
+\end{itemize}
+
+\paragraph{LIME Algorithm}
+\begin{enumerate}
+	\item Choose instance to explain.
+	\item Generate a new dataset by perturbing the instance (generate variations of it to generate similar instances).
+	      \begin{itemize}
+		      \item Tabular: Get $\mu, \sigma$ from the dataset (requires a few samples) and then swap the instances features with values drawn from the normal distribution.
+		            Maybe its also sampled straight from the datasets mass center.
+		      \item Images: Replace super-pixels (groups of connected pixel with similar colors) with a different color.
+		      \item Text: Mask out some words.
+	      \end{itemize}
+	\item Make prediction for the perturbed dataset using the black-box model
+	\item Fit the interpretable model (e.g. Linear Regression) using Equation \ref{eq:LIME-Explanation}.
+	      Points close to the to be explained instance are weighted more strongly in the loss function (by the exponential kernel).
+\end{enumerate}
+
+\paragraph{Notes}
+\begin{itemize}
+	\item Sensitive to kernel with choice.
+	\item Neighborhood definition is pretty arbitrary.
+	\item Sampling features ignores correlations
+\end{itemize}
+
+
+\subsection{Shapley values \& SHAP}
+
+
+
