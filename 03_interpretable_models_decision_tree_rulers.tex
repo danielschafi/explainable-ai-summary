@@ -84,6 +84,12 @@ Automatically produced by tree ml models
 \subsection{RulerFit}
 Combines simplicity of linear models with flexibility of decision trees.
 Learn a sparse linear model that includes original features and rules capturing nonlinear interactions(Lasso $L1$ norm added).
+
+\begin{equation}
+	\hat y = \beta_0 + \sum_{j=1}^{p}\beta_jx_j + \sum_{k=1}^{K} \alpha_kr_k
+	\label{eq:RulerFit}
+\end{equation}
+
 \paragraph{Rule Generation}
 \begin{enumerate}
 	\item Fit an ensemble of trees on the data (m trees generates $K = \sum_{m=1}^{M}2(t_m-1)$ rules,
@@ -93,11 +99,6 @@ Learn a sparse linear model that includes original features and rules capturing 
 	\item Use rules as binary features.
 	\item Add them as binary features to the model $r = 1$ if rule is active $r=0$
 \end{enumerate}
-\begin{equation}
-	\hat y = \beta_0 + \sum_{j=1}^{p}\beta_jx_j + \sum_{k=1}^{K} \alpha_kr_k
-	\label{eq:RulerFit}
-\end{equation}
-
 
 
 
