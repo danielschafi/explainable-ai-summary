@@ -13,5 +13,8 @@
 \contentsline {subsection}{\numberline {2.3}Logistic Regression}{2}{subsection.2.3}%
 \contentsline {paragraph}{Logistic / Sigmoid function}{2}{section*.7}%
 \contentsline {paragraph}{Logistic Model}{3}{section*.8}%
-\contentsline {subsection}{\numberline {2.4}Generalized Linear Models}{3}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Generalized Additive Models}{3}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.4}Linear Regression Extensions}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Generalized Linear Models}{3}{subsection.2.5}%
+\contentsline {paragraph}{Distributions and their canonical link functions}{3}{section*.9}%
+\contentsline {subsection}{\numberline {2.6}Feature Interactions}{3}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Generalized Additive Models}{3}{subsection.2.7}%

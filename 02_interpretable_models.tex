@@ -70,7 +70,7 @@ As $\lambda$ gets increased, only the most important features remain. This incre
 \begin{itemize}
 	\item Classification problems with two classes.
 	\item Models Probability of one class given the features.
-	\item Extension of linear regresion for classification.
+	\item Extension of linear regression for classification.
 	\item Uses the output of a linear regression and maps it to a Probability.
 \end{itemize}
 \paragraph{Logistic / Sigmoid function}
@@ -86,18 +86,62 @@ As $\lambda$ gets increased, only the most important features remain. This incre
 \end{equation}
 \begin{itemize}
 	\item Linear predictor is transformed via the logistic function.
-	\item Coeffictions do not act linearly on the probability. Interpretation is happens on the log-odds scale.
+	\item Coefficients do not act linearly on the probability. Interpretation is happens on the log-odds scale.
 	\item A one unit increase in $x_j$ multiplies the odds of $y=1$ vs. $y=0$ by a factor of $\exp(\beta_j)$
-	\item Predicts probabilities, which alows for better decision making. Pred with 99\% probability is more confident than one with 51\%.
+	\item Predicts probabilities, which allows for better decision making. Pred with 99\% probability is more confident than one with 51\%.
 	\item Relationships between features and outcomes remain transparent.
 \end{itemize}
 
+\subsection{Linear Regression Extensions}
+Linear Regression Models can be extended to handle some things that normal linear Regression can not.
+\begin{itemize}
+	\item $y$ distribution is not Gaussian: Use Generalized Linear Models (GLMs)
+	\item The features interact: Add interactions manually
+	\item The relationship between $x$ and $y$ is not linear: Use Generalized Additive Models (GAMs)
+\end{itemize}
 
 \subsection{Generalized Linear Models}
-Linear Regression
+Use this if the output $y$ follows a Non-Gaussian distribution.
+For example if we want to predict counts. They follow a Poisson distribution (discrete values, $Var(y) = \E{y}$)
+\begin{equation}
+	g(\E{Y|x}) = \beta_0 + \beta_1 +  \dots + \beta_p x_p = x^T\beta
+	\label{eq:GLM-formula}
+\end{equation}
+It has three components
 
+\begin{itemize}
+	\item \textbf{Random Component}: A distribution of the exponential family that defines $\mathbb{E}_Y$
+	\item \textbf{Systematic component}: Linear predictor $\eta = X^T\beta$. (LR Term)
+	\item \textbf{Link function}: Function $g(\cdot)$ that links the mean to $\eta$
+\end{itemize}
 
+Our models prediction is: $\mathbb{E}[y] = g^{-1}(x^T\beta)$ which could be 7.6 for example customer count.
+But with GLM, since we have defined the distribution of y (Poisson), we can make several inferences using the predicted mean.
+Of course this means, that we have to choose $\E{y}$ correctly, according to our data, or the inferences will be wrong.
+\begin{itemize}
+	\item Probability that we get more than 15 customers, when 7.6 was predicted as mean.
+	\item Catch outliers
+	\item Calculate the variance of our prediction.
+\end{itemize}
+\paragraph{Distributions and their canonical link functions}
+\begin{itemize}
+	\item Poisson: Log: $g(\mu) = \eta$
+	\item Binomial: Logit: $\ln\lr{\frac{\mu}{1-\mu}}=\eta$
+	\item Normal: Identity: $\mu=\eta$
+\end{itemize}
 
+\subsection{Feature Interactions}
+\begin{itemize}
+	\item Features interact with each other.
+	\item E.g. Nr of bike Rentals: Temperature and Working/Non-Working day. on days of people only rent bikes when its warm. On working days, people ride to work regardless of weather.
+	\item In LR we need to model these interactions explicitly. Add Interaction terms (Product of two features)
+	\item Interactions between different feature types:
+	      \begin{itemize}
+		      \item \texttt{Cat} x \texttt{Num}: Existence of category x Num feature value.
+		      \item \texttt{Cat} x \texttt{Cat}: \texttt{AND} between one hot encoded features.
+		      \item \texttt{Num} x \texttt{Num}: Multiply the features
+	      \end{itemize}
+\end{itemize}
 
 
 \subsection{Generalized Additive Models}
