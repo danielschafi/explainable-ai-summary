@@ -1,0 +1,106 @@
+\section{Tree Models}
+\begin{itemize}
+	\item Recursively split dataset into subsets.
+	\item Each split aims to make the subsets as homogenous as possible wrt. the target.
+	\item Preds: Classification $\to$ Majority class in leaf node. Regression $\to$ Mean of target variable of instances in leaf node.
+	\item Trees can model nonlinear and feature interactions naturally.
+\end{itemize}
+
+\subsection{Decision Trees by CART algorithm}
+\textit{Classification and Regression Trees}. Splits determined by Regression: variance of target $y$, Classification: Gini impurity/entropy.
+\begin{enumerate}
+	\item Test all possible cut-off values for splits
+	\item Check variance/impurity reduction per split
+	\item Select threshold that achieves the best split
+	\item Repeat recursively for child nodes
+\end{enumerate}
+
+\paragraph{Prediction}
+\begin{equation}
+	\hat y = \hat f (x) = \sum_{m=1}^{M}c_m \boldone\lrc{x \in R_m}
+	\label{eq:CART-Prediction}
+\end{equation}
+\begin{itemize}
+	\item $c_m$: Prediction in leafe node (Avg $y$ or majority class over training instances in subset $R_m$)
+	\item Indicator function: If $x$ is in Region $m$
+\end{itemize}
+Only one element of the sum will be active.
+
+\paragraph{Splitting Regression}
+\begin{equation}
+	Var\lr{y} = \frac{1}{N}\displaystyle\sum_{i}(y_i - \bar{y})²
+	\label{eq:variance-split}
+\end{equation}
+\paragraph{Splitting Classificaiton}
+\begin{align}
+	G = \sum_{k} p_k(1-p_k)   &  & \text{Gini Index} \\
+	H = \sum_{k} p_k\log(p_k) &  & \text{Entropy}
+\end{align}
+
+\paragraph{Stop Criteria}
+We stop splitting, when one or more conditions are met.
+\begin{itemize}
+	\item Nr of samples in a node before splitting
+	\item Nr of saples in a terminal node
+	\item Max depth
+	\item Not enough reduction in impurity or variance.
+\end{itemize}
+Final Tree partitions the input space.
+
+\paragraph{Interpreting Decision Trees}
+Follow the decision path from root to leaf. Splits along path are connected by logical \texttt{AND}
+\begin{itemize}
+	\item \textbf{Global Feature importance:} Important features are involved in more splits. And important splits reduce the variance/impurity by a large amount.
+	      \begin{equation}
+		      \text{Feature importance }= \frac{\text{Total reduction by feature}}{\text{Sum of all reductions}} \cdot 100
+		      \label{eq:tree_importance}
+	      \end{equation}
+	      Where Reduction by feature is the sum of all reductions at each split where the feature is used. Sum of all reductions is the reduction of all features combined.
+	\item \textbf{Local:} To get the contribution of a feature to the prediction:
+	      \begin{equation}
+		      \hat f(x) = \bar y + \sum_{d=1}^{D} \text{split.Contrib}(d,x) = \bar y + \sum_{j=1}^{p} \text{feat.contrib}(j, x)
+		      \label{eq:local-tree-contribution}
+	      \end{equation}
+	      Instance pred =  mean outcome + feature contributions.
+	      Contribution could be change in prediction by choosing to take one branch ($|$That subsets mean - supergroups mean$|$).
+\end{itemize}
+
+\paragraph{Notes}
+\begin{itemize}
+	\item Shallow trees (depth $\leq$ 3) provide compact explanations.
+	\item Small input changes can cause big jumps in output.
+	\item Trees quickly become to difficult to interpret with increasing depth
+\end{itemize}
+
+\subsection{Decision Rules}
+\begin{itemize}
+	\item \texttt{IF} condition \texttt{THEN} prediction.
+	\item Rules build from simple statements, can be combined or single rules. Intuitively interpretable
+	\item Support: percent of data where rules condition applies
+	\item Accuracy: Percentage of instances where the prediction is correct of instances where the rule is applied.
+\end{itemize}
+Automatically produced by tree ml models
+
+\subsection{RulerFit}
+Combines simplicity of linear models with flexibility of decision trees.
+Learn a sparse linear model that includes original features and rules capturing nonlinear interactions(Lasso $L1$ norm added).
+\paragraph{Rule Generation}
+\begin{enumerate}
+	\item Fit an ensemble of trees on the data (m trees generates $K = \sum_{m=1}^{M}2(t_m-1)$ rules,
+	      where $t_m$ is number of leaf nodes in tree m).
+	      Generate trees of different depths for diversity.
+	\item Get all unique paths from root to leaf, each one is a decision rule
+	\item Use rules as binary features.
+	\item Add them as binary features to the model $r = 1$ if rule is active $r=0$
+\end{enumerate}
+\begin{equation}
+	\hat y = \beta_0 + \sum_{j=1}^{p}\beta_jx_j + \sum_{k=1}^{K} \alpha_kr_k
+	\label{eq:RulerFit}
+\end{equation}
+
+
+
+
+
+
+
