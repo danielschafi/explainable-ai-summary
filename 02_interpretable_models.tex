@@ -130,12 +130,14 @@ Of course this means, that we have to choose $\E{y}$ correctly, according to our
 	\item Normal: Identity: $\mu=\eta$
 \end{itemize}
 
+\textit{GLMs transform model outputs $y$}
+
 \subsection{Feature Interactions}
 \begin{itemize}
 	\item Features interact with each other.
 	\item E.g. Nr of bike Rentals: Temperature and Working/Non-Working day. on days of people only rent bikes when its warm. On working days, people ride to work regardless of weather.
 	\item In LR we need to model these interactions explicitly. Add Interaction terms (Product of two features)
-	\item Interactions between different feature types:
+	\item Modelling of interactions between different feature types:
 	      \begin{itemize}
 		      \item \texttt{Cat} x \texttt{Num}: Existence of category x Num feature value.
 		      \item \texttt{Cat} x \texttt{Cat}: \texttt{AND} between one hot encoded features.
@@ -145,3 +147,37 @@ Of course this means, that we have to choose $\E{y}$ correctly, according to our
 
 
 \subsection{Generalized Additive Models}
+In a linear model, the increase of a feature by 1 has the same effect everywhere (over the whole range of that features values)
+But there is not always a linear relationship over the entire range. (Growth, saturation, decline). We need to model these nonlinear relationships.
+
+E.g. 10 to 11 degrees, bike rentals increase, but 40 to 41 degrees they decline (to hot).
+\paragraph{Approaches to Non-Linearity}
+\begin{itemize}
+	\item Replace features with transformed versions. $log(x), \sqrt{x}, x²$
+	\item Discretizise categorical features into Bins/Quantiles (one hot encoded) $\to$ model becomes step function.
+	\item GAMs: Let model learn smooth non-linear functions of features.
+\end{itemize}
+
+\paragraph{GAMs}
+\begin{equation}
+	g(\Ewrp{Y}{y|x}) = \beta_-1 + f_1(x_1) + f_2(x_2) + \dots + f_p(x_p)
+	\label{eq:GAM}
+\end{equation}
+\begin{itemize}
+	\item GAMs are GLMs but the features are transformed non-linearly with a function.
+	\item GAMs allow GLMs to learn nonlinear relationships.
+	\item $f_i(x_i)$ is usually a learned spline function.
+	      \begin{itemize}
+		      \item Think of them as $k$ new features that are obtained via $k$ spline functions. The spline functions outputs combined via a weighted sum model the non-linearity.
+		      \item The range is split into $k$ sections/knots (e.g. by percentile)
+		      \item For each section, a spline is fit e.g cubic $y = ax³ + bx² + cx + d$
+		      \item Then the outputs of these splines is combined via a weighted sum.
+	      \end{itemize}
+\end{itemize}
+
+Maintain interpretability, because the features are still additive across features.
+
+
+\textit{GAMs transform model inputs $x$ with learned non-linear functions.}
+
+
