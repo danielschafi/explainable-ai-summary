@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768322791.24896 "main.tex" "outFiles/main.pdf" "main" 1768322794.15894 0
+["pdflatex"] 1768324478.92509 "main.tex" "outFiles/main.pdf" "main" 1768324481.80213 0
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1755987285 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1755987285 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1755987285 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -205,10 +205,11 @@
   "01_intro.tex" 1767885816.07197 1408 04b75c0036569d6319d97d71e5a67035 ""
   "02_interpretable_models.tex" 1768313082.03138 8058 4bc1423bfc10f3cdc9dae2ac90a3421b ""
   "03_interpretable_models_decision_tree_rulers.tex" 1768322788.37066 4498 8373f0ba87ed2abf56f36778675df2d6 ""
-  "auxFiles/main.aux" 1768322793.86866 5447 c6ecb7c4f8a7173399589b313bc7876d "pdflatex"
-  "auxFiles/main.out" 1768322793.87066 2908 75baa59393b73f78a9e83447a679678d "pdflatex"
-  "auxFiles/main.toc" 1768322793.87166 2513 61c294d7e6757165d78acf813ad2658a "pdflatex"
-  "main.tex" 1768312906.59838 8562 b6b56e03c7dc4f97991f26e421c624d0 ""
+  "04_model_agnostic_and_examples.tex" 1768324476.43671 624 0e5df2afc36fc8c367300701d6b0aaf3 ""
+  "auxFiles/main.aux" 1768324481.51871 5817 7837e3a0be70cd62de9b4703ff3d41e2 "pdflatex"
+  "auxFiles/main.out" 1768324481.52071 3381 d690fd8e8641ffe3c95b83db1814dc3b "pdflatex"
+  "auxFiles/main.toc" 1768324481.52171 2760 6d7cb5927aa4c3706d772b9801e956e9 "pdflatex"
+  "main.tex" 1768324307.9547 8604 8a1e7e49891438d5c2dfe47b1b23ba52 ""
   (generated)
   "auxFiles/main.aux"
   "auxFiles/main.log"

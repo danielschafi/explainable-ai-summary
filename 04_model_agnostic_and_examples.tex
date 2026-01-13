@@ -1,0 +1,27 @@
+\section{Mode Agnostic and Example based}
+\subsection{Model Agnostic}
+\begin{itemize}
+	\item Compare multiple models based on model-independent metrics
+	\item Potentially better predictive performance
+	      Helps us trust black-box models better.
+\end{itemize}
+
+\subsection{Examples Based}
+
+\begin{itemize}
+	\item Explain models using specific instances.
+	\item Only useful if instances are human interpretable
+	\item Useful for Images/text, where features carry rich meaning
+	\item Easily understandable explanations: This patient was similar to this other, that's why their prediction is similar too.
+\end{itemize}
+Decision trees, kNN use example based prediction
+\paragraph{Types of examples}
+\begin{itemize}
+	\item \textbf{Prototypes}: Representative examples (similar)
+	\item \textbf{Counterfactuals:} Minimal changes to change prediction. How much to change $x_i$ so that the loan gets approved. Learn about model.
+	\item \textbf{Adversarial:} Counterfactuals designed to fool the model. Exploit the models prediction. Malicious.
+\end{itemize}
+
+
+
+

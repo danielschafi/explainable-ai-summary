@@ -31,3 +31,7 @@
 \contentsline {subsection}{\numberline {3.2}Decision Rules}{4}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}RulerFit}{4}{subsection.3.3}%
 \contentsline {paragraph}{Rule Generation}{4}{section*.18}%
+\contentsline {section}{\numberline {4}Mode Agnostic and Example based}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Model Agnostic}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Examples Based}{5}{subsection.4.2}%
+\contentsline {paragraph}{Types of examples}{5}{section*.19}%
