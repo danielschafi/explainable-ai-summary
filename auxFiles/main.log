@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.1.7)  13 JAN 2026 23:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2026.1.7)  14 JAN 2026 18:29
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -997,7 +997,7 @@ Overfull \hbox (1.40842pt too wide) in paragraph at lines 18--21
  []\OT1/cmr/bx/n/10 (-20) Global In-ter-pretabil-ity[] \OT1/cmr/m/n/10 (-20) How well the trainied model makes
  []
 
-) (./02_interpretable_models.tex
+) (./02_linear_models.tex
 
 LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 11.
 
@@ -1008,17 +1008,17 @@ Missing character: There is no ² in font cmr10!
 
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 55.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 51.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 55.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 51.
 
 Missing character: There is no ² in font cmr10!
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 64.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 63.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 64.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 63.
 
 Missing character: There is no ² in font cmr10!
 
@@ -1032,28 +1032,28 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 156.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 157.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 156.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 157.
 
 Missing character: There is no ² in font cmr10!
 
-Overfull \hbox (1.9436pt too wide) in paragraph at lines 156--157
+Overfull \hbox (1.9436pt too wide) in paragraph at lines 157--158
 []\OT1/cmr/m/n/10 (-20) Replace fea-tures with trans-formed ver-sions. $\OML/cmm/m/it/10 log\OT1/cmr/m/n/10 (-20) (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 (-20) )\OML/cmm/m/it/10 ; []; x$ 
  []
 
 
-LaTeX Warning: Command \textthreesuperior invalid in math mode on input line 173.
+LaTeX Warning: Command \textthreesuperior invalid in math mode on input line 174.
 
 
-LaTeX Warning: Command \textthreesuperior invalid in math mode on input line 173.
+LaTeX Warning: Command \textthreesuperior invalid in math mode on input line 174.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 173.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 174.
 
 
-LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 173.
+LaTeX Warning: Command \texttwosuperior invalid in math mode on input line 174.
 
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no ² in font cmr10!
@@ -1084,14 +1084,14 @@ Overfull \hbox (2.79929pt too wide) in paragraph at lines 22--23
  []
 
 ) (./05_local_model_agnostic_explanations.tex
-<images/fig-ice-bike-1.png, id=200, 505.89pt x 202.13016pt>
+<images/fig-ice-bike-1.png, id=205, 505.89pt x 202.13016pt>
 File: images/fig-ice-bike-1.png Graphic file (type png)
 <use images/fig-ice-bike-1.png>
 Package pdftex.def Info: images/fig-ice-bike-1.png  used on input line 20.
 (pdftex.def)             Requested size: 252.03531pt x 100.70396pt.
 
 
-<images/ice-bike-centered-1.png, id=201, 505.89pt x 361.35pt>
+<images/ice-bike-centered-1.png, id=206, 505.89pt x 361.35pt>
 File: images/ice-bike-centered-1.png Graphic file (type png)
 <use images/ice-bike-centered-1.png>
 Package pdftex.def Info: images/ice-bike-centered-1.png  used on input line 29.
@@ -1101,7 +1101,7 @@ Overfull \hbox (14.30733pt too wide) in paragraph at lines 46--46
 []\OT1/cmr/bx/n/12 (-20) LIME - Lo-cal In-ter-pretable Model-Agnostic
  []
 
-<images/fig-lime-fitting-1.png, id=202, 505.89pt x 505.89pt>
+<images/fig-lime-fitting-1.png, id=207, 505.89pt x 505.89pt>
 File: images/fig-lime-fitting-1.png Graphic file (type png)
 <use images/fig-lime-fitting-1.png>
 Package pdftex.def Info: images/fig-lime-fitting-1.png  used on input line 50.
@@ -1110,15 +1110,26 @@ Package pdftex.def Info: images/fig-lime-fitting-1.png  used on input line 50.
 
 [5 <./images/fig-ice-bike-1.png (PNG copy)> <./images/ice-bike-centered-1.png (PNG copy)>]
 
-) (./06_global_model_agnostic_explanations.tex)
+
+Overfull \hbox (18.90231pt too wide) detected at line 100
+[][][]\OML/cmm/m/it/10 ^^^[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 val\OT1/cmr/m/n/10 ) = [] [] []
+ []
+
+
+
+[6 <./images/fig-lime-fitting-1.png (PNG copy)>]) (./06_global_model_agnostic_explanations.tex)
 
 Package caption Warning: Unused \captionsetup[sub] on input line 323.
 See the caption package documentation for explanation.
 
 
 
-[6 <./images/fig-lime-fitting-1.png (PNG copy)>]
-runsystem(latexminted cleantemp  --timestamp 20260113232450 FAD58DE7366495DB4650CFEFAC2FCD61)...executed.
+
+
+[7
+
+]
+runsystem(latexminted cleantemp  --timestamp 20260114182907 FAD58DE7366495DB4650CFEFAC2FCD61)...executed.
 
  (auxFiles/main.aux)
  ***********
@@ -1126,21 +1137,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 242656509B66A449F509698BECE928C8;4327.
+(rerunfilecheck)             Checksum: 119B89E477FB3B4C492811AF1A9709A0;4607.
  ) 
 Here is how much of TeX's memory you used:
- 32429 strings out of 473190
- 625998 string characters out of 5722594
- 1261660 words of memory out of 5000000
- 54965 multiletter control sequences out of 15000+600000
- 566841 words of font info for 114 fonts, out of 8000000 for 9000
+ 32467 strings out of 473190
+ 626400 string characters out of 5722594
+ 1261810 words of memory out of 5000000
+ 54974 multiletter control sequences out of 15000+600000
+ 567863 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,12n,109p,1001b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on auxFiles/main.pdf (6 pages, 1399289 bytes).
+ 104i,11n,109p,1001b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on auxFiles/main.pdf (7 pages, 1420945 bytes).
 PDF statistics:
- 323 PDF objects out of 1000 (max. 8388607)
- 277 compressed objects within 3 object streams
- 91 named destinations out of 1000 (max. 500000)
- 21212 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 353 PDF objects out of 1000 (max. 8388607)
+ 303 compressed objects within 4 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 25316 words of extra memory for PDF output out of 29859 (max. 10000000)
 

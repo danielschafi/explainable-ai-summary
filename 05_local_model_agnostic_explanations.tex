@@ -90,5 +90,61 @@ where
 
 
 \subsection{Shapley values \& SHAP}
+\subsubsection{Shapley values}
+\textit{Goal: Fairly attribute the difference between the average and a specific prediction to all input features.}
 
+\paragraph{In Theory}
+\begin{equation}
+	\phi_j(val)=\sum_{S\subseteq\{1,\ldots,p\} \setminus \{j\}}\underbrace{\frac{|S|!\left(p-|S|-1\right)!}{p!}}_{\text{weight}} \underbrace{\left(val\left(S\cup\{j\}\right)-val(S)\right)}_{\text{Marginal contribution of $j$}}
+	\label{eq:Shapley-Values}
+\end{equation}
+$\phi_j$, the Shapley value is the average marginal contribution of feature $j$ across all possible feature coalitions that $j$ can join.
+
+\begin{itemize}
+	\item $S$: Subset of features that does not include $j$
+	\item $val_x(S)$: Prediction value using only features in $S$ (from the instance that we want to explain.)
+	\item $val_x(S \setminus{j})$: Prediction value using features in $S$ and $j$
+	\item $\frac{|S|!\left(p-|S|-1\right)!}{p!}$: Probability that $j$ can make that contribution. E.g. Number of ways, that $j$ can join a coalition of three other features.
+\end{itemize}
+
+The $val_\textbf{x}(S)$ is the predicted outcome of the model minus the average prediction using the defined features ($S$).
+\begin{equation}
+	val_{\mathbf{x}}(S)=\int\hat{f}(x_{1},\ldots,x_{p})d\mathbb{P}_{X_C}-\mathbb{E}[\hat{f}(\mathbf{X})]
+	\label{eq:shap-val-function}
+\end{equation}
+This essentially tells us to integrate over the probability distribution of the features not in the coalition $X_C$ and get the average prediction.
+
+\begin{equation}
+	\sum_{j=1}^{p}\phi_j(\hat{f}) = \hat{f}(\mathbf{x})-\mathbb{E}[\hat{f}(\mathbf{X})]
+	\label{eq:sumofshapley}
+\end{equation}
+The sum of Shapley values fully explains the difference from the mean prediction.
+
+\paragraph{In Practice}
+\begin{itemize}
+	\item Because in ML Models we need the same amount of input features for all predictions, we can't just leave them out.
+	\item All possible sets of features have to be evaluated. This quickly becomes computationally intractable for more than a few features.
+\end{itemize}
+Approximation using Monte-Carlo sampling
+\begin{equation}
+	\hat{\phi}_{j} = \frac{1}{M}\sum_{m=1}^M\left(\hat{f}(\mathbf{x}^{(m)}_{+j}) - \hat{f}(\mathbf{x}^{(m)}_{-j})\right)
+	\label{eq:mc-shapley}
+\end{equation}
+\begin{enumerate}
+	\item Replace random features in $x$ with features from a randomly sampled data point $z$
+	\item Make one prediction for $x_{+j}$, where $j$ is taken from $x$ and one with $x_{-j}$ where $j$ is from $z$.
+	      \\ $\to$ Marginal contribution of $j$
+	\item Compare predictions
+	\item Repeat $M$ times and take the mean difference as the Shapley value.
+\end{enumerate}
+\paragraph{Notes}
+\begin{itemize}
+	\item Computationally expensive
+	\item Requires access to the data distribution (a dataset)
+	\item Only attribution method that satisfies properties Efficiency, Symmetry, Dummy and Additivity which together can be considered a definition of a \textit{fair payout}.
+	\item Contrastive explanations: Instead of average could compare to a subset or single data point.
+	\item Not Local in some sense. positive value does not mean that increasing the feature would increase the prediction. Interpret wrt. Reference dataset
+\end{itemize}
+
+\subsubsection{SHAP - SHapley Additive exPlanations}
 

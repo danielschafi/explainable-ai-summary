@@ -43,10 +43,18 @@ Large, certain weights = important features. Small or uncertain weights = weak e
 	\item Different encodings for variables.
 \end{itemize}
 
-\subsection{Shrinkage Models}
-Using models that keep only the relevant features helps with interpretability.
 
-\subsubsection{Lasso - Least Absolute Shrinkage and Selection Operator}
+\paragraph{Notes on Linear Regression}
+\begin{itemize}
+	\item Perfectly understood
+	\item Only captures linear relationships
+	\item Ignores feature interactions, must be added manually ($x_1x_2, x²$ etc.)
+	\item Lower accuracy compared to more flexible Models.
+\end{itemize}
+
+
+\subsection{Lasso - Least Absolute Shrinkage and Selection Operator}
+Using models that keep only the relevant features helps with interpretability.
 \begin{itemize}
 	\item Adds L1 Norm, Performs feature selection, regularization
 	\item Enforces sparsity in Linear model
@@ -57,13 +65,6 @@ Using models that keep only the relevant features helps with interpretability.
 \end{equation}
 As $\lambda$ gets increased, only the most important features remain. This increases interpretability.
 
-\paragraph{About Linear Regression}
-\begin{itemize}
-	\item Perfectly understood
-	\item Only captures linear relationships
-	\item Ignores feature interactions, must be added manually ($x_1x_2, x²$ etc.)
-	\item Lower accuracy compared to more flexible Models.
-\end{itemize}
 
 
 \subsection{Logistic Regression}
@@ -100,7 +101,7 @@ Linear Regression Models can be extended to handle some things that normal linea
 	\item The relationship between $x$ and $y$ is not linear: Use Generalized Additive Models (GAMs)
 \end{itemize}
 
-\subsection{Generalized Linear Models}
+\subsubsection{Generalized Linear Models}
 Use this if the output $y$ follows a Non-Gaussian distribution.
 For example if we want to predict counts. They follow a Poisson distribution (discrete values, $Var(y) = \E{y}$)
 \begin{equation}
@@ -132,7 +133,7 @@ Of course this means, that we have to choose $\E{y}$ correctly, according to our
 
 \textit{GLMs transform model outputs $y$}
 
-\subsection{Feature Interactions}
+\subsubsection{Feature Interactions}
 \begin{itemize}
 	\item Features interact with each other.
 	\item E.g. Nr of bike Rentals: Temperature and Working/Non-Working day. on days of people only rent bikes when its warm. On working days, people ride to work regardless of weather.
@@ -146,7 +147,7 @@ Of course this means, that we have to choose $\E{y}$ correctly, according to our
 \end{itemize}
 
 
-\subsection{Generalized Additive Models}
+\subsubsection{Generalized Additive Models}
 In a linear model, the increase of a feature by 1 has the same effect everywhere (over the whole range of that features values)
 But there is not always a linear relationship over the entire range. (Growth, saturation, decline). We need to model these nonlinear relationships.
 

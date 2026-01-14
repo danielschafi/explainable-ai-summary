@@ -360,9 +360,9 @@ INPUT 01_intro.tex
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
-INPUT ./02_interpretable_models.tex
-INPUT ./02_interpretable_models.tex
-INPUT 02_interpretable_models.tex
+INPUT ./02_linear_models.tex
+INPUT ./02_linear_models.tex
+INPUT 02_linear_models.tex
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
@@ -396,6 +396,8 @@ INPUT ./images/fig-lime-fitting-1.png
 INPUT ./images/fig-lime-fitting-1.png
 INPUT ./images/fig-lime-fitting-1.png
 INPUT ./images/fig-lime-fitting-1.png
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
 INPUT ./06_global_model_agnostic_explanations.tex
 INPUT ./06_global_model_agnostic_explanations.tex
 INPUT 06_global_model_agnostic_explanations.tex
@@ -405,6 +407,7 @@ INPUT auxFiles/main.out
 INPUT /usr/share/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
