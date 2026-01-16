@@ -147,4 +147,31 @@ Approximation using Monte-Carlo sampling
 \end{itemize}
 
 \subsubsection{SHAP - SHapley Additive exPlanations}
+\italic{Change of useage of Shapley values, new ways of estimating and aggregating them. Brought Shapley values to text and imag models.
+	Takes the game theory and adapts it to ML explanations.}
+\begin{itemize}
+	\item Player can be an individual feature or a group of features (e.g. superpixel in images, word in text)
+	\item
+\end{itemize}
+
+
+Since it is hard to see sometimes, if the individual curves are different from one another, they are usually centered.
+
+To center the curves subtract the intercept of each curve. They start at different intercepts, because the data points are different (duh).
+
+
+Originally Shapley values were not intended for ML Models and so they had to be adapted a bit to suit the needs of ML explanations.
+And make the Approximations faster.
+
+Lundber and Lee made based on Shapley values SHAP.
+\begin{itemize}
+	\item KernelSHAP: Model agnostic, uses a weighted linear regression to estimate Shapley values.
+	\item TreeSHAP: Fast exact solution for tree-based models.
+\end{itemize}
+These make the computation of Shapley values feasible for ML models.
+
+Provides both local and global explanations.
+
+
+
 
