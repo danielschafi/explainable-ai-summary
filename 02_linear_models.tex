@@ -8,7 +8,7 @@ Predicts target as weighted sum of inputs.
 \end{equation}
 Estimated usually by Ordinary Least Squares (OLS)
 \begin{equation}
-	\hat \beta = \argmin{\beta_0, \dots , \beta_p} \sum_{i=1}^n \lr{y^{(i)} - \lr{\beta_0 + \sum_{j=1}^p}\beta_jx_j^{(i)}}²
+	\hat \beta = \argmin{\beta_0, \dots , \beta_p} \sum_{i=1}^n \lr{y^{(i)} - \lr{\beta_0 + \sum_{j=1}^p\beta_jx_j^{(i)}}}^{2}
 	\label{eq:OLS}
 \end{equation}
 Each weight represents the effect of one feature, holding others constant.
@@ -60,7 +60,7 @@ Using models that keep only the relevant features helps with interpretability.
 	\item Enforces sparsity in Linear model
 \end{itemize}
 \begin{equation}
-	\underset{\beta}{min} \frac{1}{n}\sum:{i=1}^n\lr{y^{(i)}-x_i^T \beta }² + \lambda \norm{\beta}_1
+	\underset{\beta}{min} \frac{1}{n}\sum_{i=1}^n\lr{y^{(i)}-x_i^T \beta }^{2} + \lambda \norm{\beta}_1
 	\label{eq:LASSO-L1}
 \end{equation}
 As $\lambda$ gets increased, only the most important features remain. This increases interpretability.
@@ -171,7 +171,7 @@ E.g. 10 to 11 degrees, bike rentals increase, but 40 to 41 degrees they decline 
 	      \begin{itemize}
 		      \item Think of them as $k$ new features that are obtained via $k$ spline functions. The spline functions outputs combined via a weighted sum model the non-linearity.
 		      \item The range is split into $k$ sections/knots (e.g. by percentile)
-		      \item For each section, a spline is fit e.g cubic $y = ax³ + bx² + cx + d$
+		      \item For each section, a spline is fit e.g cubic $y = ax^3 + bx^2 + cx + d$
 		      \item Then the outputs of these splines is combined via a weighted sum.
 	      \end{itemize}
 \end{itemize}

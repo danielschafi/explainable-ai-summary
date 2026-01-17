@@ -17,7 +17,7 @@
 
 \paragraph{Prediction}
 \begin{equation}
-	\hat y = \hat f (x) = \sum_{m=1}^{M}c_m \boldone\lrc{x \in R_m}
+	\hat y = \hat f (x) = \sum_{m=1}^{M}c_m \cdot \boldone\lrc{x \in R_m}
 	\label{eq:CART-Prediction}
 \end{equation}
 \begin{itemize}
@@ -28,7 +28,7 @@ Only one element of the sum will be active.
 
 \paragraph{Splitting Regression}
 \begin{equation}
-	Var\lr{y} = \frac{1}{N}\displaystyle\sum_{i}(y_i - \bar{y})²
+	Var\lr{y} = \frac{1}{N}\displaystyle\sum_{i}(y_i - \bar{y})^2
 	\label{eq:variance-split}
 \end{equation}
 \paragraph{Splitting Classificaiton}
