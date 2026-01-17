@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768596281.95962 "main.tex" "outFiles/main.pdf" "main" 1768596284.4102 2
+["pdflatex"] 1768652353.67046 "main.tex" "outFiles/main.pdf" "main" 1768652356.44498 0
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1755987285 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1755987285 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1755987285 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -31,6 +31,7 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1755987285 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1755987285 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1755987285 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1755987285 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1755987285 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1755987285 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1755987285 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
@@ -209,14 +210,19 @@
   "02_linear_models.tex" 1768405989.55217 8039 05856f8a56a6cc5e1047277dd3225f35 ""
   "03_interpretable_models_decision_tree_rulers.tex" 1768322788.37066 4498 8373f0ba87ed2abf56f36778675df2d6 ""
   "04_model_agnostic_and_examples.tex" 1768324751.22271 1055 3155b90c04f8e58269af787e2002a3f2 ""
-  "05_local_model_agnostic_explanations.tex" 1768596280.1943 8057 8a57bd5e28ef63ddc0fb5580665e0953 ""
+  "05_local_model_agnostic_explanations.tex" 1768652349.76504 13464 f1bacf4565e8d10819f91a7a09117802 ""
   "06_global_model_agnostic_explanations.tex" 1768327438.57179 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "auxFiles/main.aux" 1768596284.18424 8746 5894f767ec269acb9ad047e72fd08669 "pdflatex"
-  "auxFiles/main.out" 1768596284.18724 4607 119b89e477fb3b4c492811af1a9709a0 "pdflatex"
-  "auxFiles/main.toc" 1768596284.18724 3859 6545b205acc3e48c7be93ed071ebdecf "pdflatex"
+  "auxFiles/main.aux" 1768652356.17104 10697 70531fc8159989f788e7bcf6a92f7523 "pdflatex"
+  "auxFiles/main.out" 1768652356.17304 4607 119b89e477fb3b4c492811af1a9709a0 "pdflatex"
+  "auxFiles/main.toc" 1768652356.17404 4077 48f84e79a2f6a40537e5cb7c970c55d7 "pdflatex"
   "images/fig-ice-bike-1.png" 1768328207.09981 382208 7608bbb2190bcc15795da4f43c8f9d46 ""
   "images/fig-lime-fitting-1.png" 1768333417.06418 299623 080b75e80c62c988e89d6d4a8770175c ""
   "images/ice-bike-centered-1.png" 1768328227.86281 505963 c4070dbc612ed5bd0cfd2ebd2c3eca98 ""
+  "images/shap-clustering.jpg" 1768652135.33303 41747 210c4b1660d0841d8ae7048dd300f816 ""
+  "images/shap-dependence-interaction.jpg" 1768651917.84213 28422 dd6f8f0616fea6d657bd2a5e6ebbcbab ""
+  "images/shap-dependence.jpg" 1768651506.98023 27200 772513b169349a051a6e7dad90432dd7 ""
+  "images/shap-importance-extended.jpg" 1768651318.80301 33770 d59bf1235ee1e83878f6078089e2fd84 ""
+  "images/shap-importance.jpg" 1768651183.31001 28166 36e61aa63901bda970f118fca3df25b8 ""
   "main.tex" 1768403338.73006 8739 5a34da1cb6fd17df97005db00d29f328 ""
   (generated)
   "auxFiles/main.aux"

@@ -141,37 +141,157 @@ Approximation using Monte-Carlo sampling
 \begin{itemize}
 	\item Computationally expensive
 	\item Requires access to the data distribution (a dataset)
-	\item Only attribution method that satisfies properties Efficiency, Symmetry, Dummy and Additivity which together can be considered a definition of a \textit{fair payout}.
+	\item Only attribution method that satisfies following properties,which together can be considered a definition of a \textit{fair payout}.
+	      \begin{itemize}
+		      \item Efficiency: Contributions sum to prediction minus mean.
+		      \item Symmetry: Features with identical effects get equal contributions.
+		      \item Dummy: Features that don't change the prediction get contribution 0
+		      \item Additivity: For combined models, Shapley values add up accordingly.
+	      \end{itemize}
 	\item Contrastive explanations: Instead of average could compare to a subset or single data point.
-	\item Not Local in some sense. positive value does not mean that increasing the feature would increase the prediction. Interpret wrt. Reference dataset
+	\item Not Local in some sense. Positive value does not mean that increasing the feature would increase the prediction. Interpret wrt. Reference dataset
 \end{itemize}
 
 \subsubsection{SHAP - SHapley Additive exPlanations}
-\italic{Change of useage of Shapley values, new ways of estimating and aggregating them. Brought Shapley values to text and imag models.
-	Takes the game theory and adapts it to ML explanations.}
+When we compute Shapley values, \textit{we want to know how much each feature contributed on average.}
+
+SHAP adjusts the Shapley value computation for the needs of ML models. Make it more efficient, and offer ways to approximate them.
+
+\paragraph{Theory}
+
+In SHAP we want to explain model predictions as a linear combination of feature contributions (Shapley values).
+\begin{equation}
+	g(\mathbf{z}')=\phi_0+\sum_{j=1}^M\phi_j z_j'
+	\label{eq:shap-explanation-g}
+\end{equation}
 \begin{itemize}
-	\item Player can be an individual feature or a group of features (e.g. superpixel in images, word in text)
-	\item
+	\item $g$ Explanation model
+	\item $z' = (z'_1, \ldots, z'_M)^T \in \{0,1\}$ Coalition vector: 1=feature present, 0=feature absent.
+	\item $M$ Maximum coalition size
+	\item $\phi_j \in \mathbb{R}$ Feature attribution for feature $j$
+\end{itemize}
+
+\paragraph{KernelSHAP}
+Instead of exactly calculating the outputs for all $2^k$ possible coalition we fit a linear regression model.
+Where the input $z'$ is the coalition vector which signals if a feature is present and its prediction target $y$ is the prediction from the original model
+for an instance where the not included features are replaced by features from random instances.
+
+Like this the coefficients are essentially, what each feature contributed to the prediction and $\phi_0$ is the mean prediction, which is what Shapley values are.
+Or more precisely:
+
+\begin{enumerate}
+	\item Sample coalition vectors $z'_k \in \lrc{0,1}^M, k \in \lrc{1, \dots , K}$
+	\item Get prediction for each $z'_k$ convert it to a feature vector and apply the model $\hat f: \hat f \lr{h_x(z_k')}$
+	\item Compute the weight for each coalition $z_k'$ with the SHAP kernel $\pi_x(z'_k)$. How much we can learn from this coalition about the feature contributions.
+	\item Fit weighted linear regression model
+	\item Return Shapley values $\phi_k$ the coefficients from the linear model.
+\end{enumerate}
+Where
+\begin{itemize}
+	\item $h_x(z_k')=z \text{ where } h_x(z_k'):\lrc{0,1}^M \to \mathbb{R}^p$ maps 1s to the features from instance $x$, 0s to features from another random sample from the data.
+	\item $\hat f$ Is the model whose predictions we want to explain.
+\end{itemize}
+The SHAP Kernel.
+\begin{equation}
+	\pi_{\mathbf{x}}(\mathbf{z}') = \frac{(M-1)}{\binom{M}{|\mathbf{z}'|} |\mathbf{z}'| (M - |\mathbf{z}'|)}
+	\label{eq:shap-kernel}
+\end{equation}
+\begin{itemize}
+	\item $M$ Maximum coalition size
+	\item $|z'|$ Number of present features in instance $z'$
+\end{itemize}
+Assigns a weight to each coalition. If a coalition consists of a single feature, we can learn about this feature’s isolated main effect on the prediction.
+If a coalition consists of all but one feature, we can learn about this feature’s total effect (main effect plus feature interactions).\\
+
+To get the most value out of the $K$ coalitions. We can sample more efficiently, by starting with the coalitions that will have higher weights and move to those with lower weights until we have $K$ coalitions.\\
+
+With this we can train the linear model with a weighted sum of squares.
+\begin{equation}
+	L(\hat{f}, g, \pi_{\mathbf{x}}) = \sum_{\mathbf{z}' \in \mathbf{Z}} [\hat{f}(h_{\mathbf{x}}(\mathbf{z}')) - g(\mathbf{z}')]^2 \pi_{\mathbf{x}}(\mathbf{z}')
+	\label{eq:linear-model-shap-kernel}
+\end{equation}
+\begin{itemize}
+	\item $Z$ Training data containing our coalition vectors $z'$
+\end{itemize}
+
+\paragraph{TreeSHAP}
+Variation of SHAP for tree-based models. It is a faster model-specific alternative to KernelSHAP.
+Tree has only limited amount of different possible predictions, so many coalitions will have the same prediction and we make the same computations multiple times.
+E.g. for depth 5 there are 32 possible output.
+
+We can exploit this and make each computation only one time and then we just need to weight those according to how many coalitions would have ended in that prediction.
+
+\begin{itemize}
+	\item Features that do not influence then model can Still get non-zero SHAP values.
+	\item Still much faster than KernelSHAP.
+\end{itemize}
+
+\paragraph{Visualizations}
+\textbf{SHAP Feature Importance}
+\begin{equation}
+	I_j=\frac{1}{n}\sum_{i=1}^n |\phi_j^{(i)}|
+	\label{eq:shapimportance}
+\end{equation}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/shap-importance.jpg}
+	\end{center}
+	\caption{SHAP Feature Importance}\label{fig:shapimportance}
+\end{figure}
+
+\textbf{SHAP Summary Plot}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/shap-importance-extended.jpg}
+	\end{center}
+	\caption{SHAP Summary}\label{fig:shap-importance-extended}
+\end{figure}
+Overlapping points are offset in the y-axis direction, gives a sense of the distribution of Shapley values per features.
+
+
+\textbf{SHAP Dependence Plot}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/shap-dependence.jpg}
+	\end{center}
+	\caption{SHAP Dependence Plot}\label{fig:shap-dependence}
+\end{figure}
+\begin{itemize}
+	\item Like PDP/ALE, but shows full distribution, not only average
+	\item Variance reveals interactions. (interactions = higher variance)
+\end{itemize}
+We can plot the interaction values in the dependence plot.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.95\linewidth]{images/shap-dependence-interaction.jpg}
+	\end{center}
+	\caption{Plots the dependence plot for one feature and the color signals the interaction with another feature.}\label{fig:dependenceinteractionshap}
+\end{figure}
+
+\textbf{Clustering SHAP}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.95\linewidth]{images/shap-clustering.jpg}
+	\end{center}
+	\caption{Stacked SHAP explanations clustered by explanation similarity}\label{fig:clusteringshap}
+\end{figure}
+\begin{itemize}
+	\item Force Plots for all instances side by side, clustered by similarity
+	\item Identify distinct risk profiles or behavior groups
 \end{itemize}
 
 
-Since it is hard to see sometimes, if the individual curves are different from one another, they are usually centered.
-
-To center the curves subtract the intercept of each curve. They start at different intercepts, because the data points are different (duh).
-
-
-Originally Shapley values were not intended for ML Models and so they had to be adapted a bit to suit the needs of ML explanations.
-And make the Approximations faster.
-
-Lundber and Lee made based on Shapley values SHAP.
+\paragraph{SHAP Notes}
 \begin{itemize}
-	\item KernelSHAP: Model agnostic, uses a weighted linear regression to estimate Shapley values.
-	\item TreeSHAP: Fast exact solution for tree-based models.
+	\item Shapley Advantages
+	\item Rich sets of plots
+	\item Bridges LIME and Shapley, same additivity as LIME but grounded in Axioms.
+	\item KernelSHAP is slow
+	\item unrealistic combinations of features when features are dependent (like all permutation based methods)
+	\item TreeSHAP uses conditional expectations. Can attribute importance to non-influential correlated features.
+	\item Shapley disadvantages.
 \end{itemize}
-These make the computation of Shapley values feasible for ML models.
 
-Provides both local and global explanations.
-
-
-
-
+Careful when features are strongly correlated or when you need fast, sparse explanations.

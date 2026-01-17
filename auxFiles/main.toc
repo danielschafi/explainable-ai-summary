@@ -49,3 +49,7 @@
 \contentsline {paragraph}{In Practice}{6}{section*.30}%
 \contentsline {paragraph}{Notes}{7}{section*.31}%
 \contentsline {subsubsection}{\numberline {5.3.2}SHAP - SHapley Additive exPlanations}{7}{subsubsection.5.3.2}%
+\contentsline {paragraph}{Theory}{7}{section*.32}%
+\contentsline {paragraph}{KernelSHAP}{7}{section*.33}%
+\contentsline {paragraph}{TreeSHAP}{7}{section*.34}%
+\contentsline {paragraph}{Visualizations}{7}{section*.35}%
