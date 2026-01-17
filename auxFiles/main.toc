@@ -53,3 +53,4 @@
 \contentsline {paragraph}{KernelSHAP}{7}{section*.33}%
 \contentsline {paragraph}{TreeSHAP}{7}{section*.34}%
 \contentsline {paragraph}{Visualizations}{7}{section*.35}%
+\contentsline {paragraph}{SHAP Notes}{8}{section*.41}%
