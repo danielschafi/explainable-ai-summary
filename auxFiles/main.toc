@@ -64,3 +64,7 @@
 \contentsline {paragraph}{Notes}{10}{section*.49}%
 \contentsline {paragraph}{Additional Notes}{10}{section*.51}%
 \contentsline {paragraph}{Rule of thumb PDP/ALE: }{10}{section*.52}%
+\contentsline {subsection}{\numberline {6.3}Feature Interaction - H-Statistic}{10}{subsection.6.3}%
+\contentsline {paragraph}{Decomposition of Prediction}{10}{section*.53}%
+\contentsline {paragraph}{Friedman's H-Statistic}{10}{section*.54}%
+\contentsline {paragraph}{Notes}{11}{section*.56}%

@@ -162,3 +162,58 @@ Use PDP if features are not correlated.
 If feature are correlated, but PDP and ALE show more or less the same curves, go for the simpler PDP interpretation.
 If feature are correlated and PDP and ALE differ, go with the ALE plot.
 
+
+\subsection{Feature Interaction - H-Statistic}
+\paragraph{Decomposition of Prediction}
+\textit{Prediction = Constant + Effect of Feature 1 + Effect of Feature 2 + Interaction Effect}
+\begin{itemize}
+	\item Interaction term captures effects that are not explained by individual features alone. If their effects on the prediction are \textit{not additive}
+	      H-Statistic measures interaction strength
+	\item ALE and PDP interaction Plots can visualize them
+\end{itemize}
+
+\paragraph{Friedman's H-Statistic}
+Measures interaction strength between features. Between two specific features or between one feature and all others.
+
+\begin{equation}
+	PD_{jk}(\mathbf{x}_j, \mathbf{x}_k) = PD_j(\mathbf{x}_j) + PD_k(\mathbf{x}_k)
+	\label{eq:pdp-decomposition}
+\end{equation}
+Two way partial dependency function is decomposed into the features 1d partial Dependency functions if they have no interactions. All functions centered at 0.
+And for the prediction
+\begin{equation}
+	\hat{f}(\mathbf{x}) = PD_j(x_j) + PD_{-j}(\mathbf{x}_{-j})
+	\label{eq:prediction-pdpd-preddecompose}
+\end{equation}
+\begin{itemize}
+	\item First summand depends only on feature j, second on all other features except j
+\end{itemize}
+
+Now we measure the difference between the observed PD function and the decomposed one without interactions.
+Then we check how much is due to interaction and what is explained through the individual PDs.
+If the difference is big, then a lot is due to interactions. If all is due to interaction, the statistic will be 1.
+
+Interaction between feature j and k
+\begin{equation}
+	H^2_{jk} = \frac{\sum_{i=1}^n\left[PD_{jk}(x_{j}^{(i)},x_k^{(i)})-PD_j(x_j^{(i)}) - PD_k(x_{k}^{(i)})\right]^2}{\sum_{i=1}^n\left({PD}_{jk}(x_j^{(i)},x_k^{(i)})\right)^2}
+	\label{eq:jk-interaction}
+\end{equation}
+
+Interaction between j and all other features:
+\begin{equation}
+	H^2_{j} = \frac{\sum_{i=1}^n\left[\hat{f}(\mathbf{x}^{(i)}) - PD_j(x^{(i)}_j) - PD_{-j}(\mathbf{x}_{-j}^{(i)})\right]^2}{\sum_{i=1}^n \left(\hat{f}(\mathbf{x}^{(i)})\right)^2}
+	\label{eq:interaction-jrest}
+\end{equation}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{images/fig-interaction-penguins-1.png}
+	\end{center}
+	\caption{}\label{fig:}
+\end{figure}
+
+\paragraph{Notes}
+\begin{itemize}
+	\item Interpretation: 0 if there is no interaction, 1 if all the variance is explained by the sum of PD functions.
+	\item Meaningful interpretation: Share of variance that is explained by the interaction.
+	\item Computationally expensive
+\end{itemize}
