@@ -49,6 +49,16 @@
 	\item Works the same way for categorical. Replace all values with one class and get the average prediction.
 \end{itemize}
 
+\begin{enumerate}
+	\item Select feature
+	\item Define Grid of feature values.
+	\item Per grid value:
+	      \begin{enumerate}
+		      \item Replace feature with grid value in all samples
+		      \item Average predictions.
+	      \end{enumerate}
+\end{enumerate}
+
 \subsubsection{PDP Feature Importance}
 \begin{itemize}
 	\item Flat PDP $\to$ feature is unimportant
@@ -61,3 +71,94 @@ For numerical features: Importance is the standard deviation of PDP values.
 	\label{eq:pdpimportance}
 \end{equation}
 Normal distribution, 95\% of values are within $\pm 2\sigma$
+
+
+\subsection{ALE - Accumulated Local Effects}
+\textit{How features influence the predictions of a machine learning model on average}
+\begin{itemize}
+	\item Faster and unbias alternative to PDPs
+	\item PDPs fail with correlated features.
+	\item Unlikely or impossible datapoints will be used and bias the calculations of the PDP
+\end{itemize}
+
+\paragraph{M-Plots Marginal Plot}
+Not the solution, but a first step to solving PDP's problem. We want the feature effect estimate to respect the correlation.
+
+The M-Plot averages over the conditional distribution of the feature. Instead of taking the average over the whole dataset,
+we only take the data points that have feature values similar to the current grid value.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/fig-aleplot-motivation2-1.png}
+	\end{center}
+	\caption{M-Plot}\label{fig:M-Plot}
+\end{figure}
+But this has a problem. If we have correlated features $X_1, X_2$ (e.g. living area and, room count) and we want to get the effect of $X_1$ on the prediction.
+When we only average samples with $X_1$ that are close to the grid value, then we are really plotting the \textit{combined} effect of $X_1, X_2$ on the prediction.
+
+\paragraph{ALE-Plot}
+M-Plots avoid unlinkely data instances, but mix the effect of a feature with the effect of all correlated features.
+
+ALE plots solve this by calculating also based on the conditional distribution of the features, \textit{differences in predictions instead of averages}
+
+
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/fig-aleplot-computation-1.png}
+	\end{center}
+	\caption{ALE-Computation}\label{fig:ALE-Computation}
+\end{figure}
+For the effect of living area at 30 m², the ALE method uses all houses with about 30 m², gets the model predictions pretending these houses were 31 m², minus the prediction pretending they were 29 m². This gives us the pure effect of the living area and does not mix the effect with the effects of correlated features.
+
+
+\begin{equation}
+	\hat{\tilde{f}}_{j,ALE}(\mathbf{x}) = \sum_{k=1}^{k_j(\mathbf{x})} \frac{1}{n_j(k)} \sum_{i: x_j^{(i)} \in N_j(k)} \left[\hat{f}(z_{k,j}, \mathbf{x}^{(i)}_{-j}) - \hat{f}(z_{k-1,j}, \mathbf{x}^{(i)}_{-j})\right]
+	\label{eq:ale-estimation}
+\end{equation}
+Uncentered ALE estimate:
+\begin{itemize}
+	\item Differences in predictions where we replace the feature value of interest with grid values $z$. The difference is the effect.
+	\item Right side: Average effect of all instances within an interval (neighborhood $N_j(k))$), $n_j(k)$ Nr of instances in neighborhood.
+	\item Left Sum: Accumulate the local effects. The uncentered ALE of a feature value that lies in the third interval is the sum of the effects of the first, second and third intervals.
+\end{itemize}
+
+This gets centered so that the mean effect is zero
+\begin{equation}
+	\hat{f}_{j,ALE}(\mathbf{x}) = \hat{\tilde{f}}_{j,ALE}(\mathbf{x}) - \frac{1}{n} \sum_{i=1}^{n} \hat{\tilde{f}}_{j,ALE}(x_j^{(i)})
+	\label{eq:alecentered}
+\end{equation}
+
+\paragraph{Notes}
+\begin{itemize}
+	\item Main effect of a feature at a certain value compared to the average prediction of the data.
+	\item E.g. ALE estimate of -2 at $x_j^{(i)} =3$ means, that when the $j$-th feature is 3, then the prediction is lower by 2 compared to the average prediction.
+	\item Quantiles are used to define the intervals: Same nr of instances in each interval. But can have very different lengths
+	\item Since ALE relies on an order of feature values it is harder to apply it for categorical features. Need to impose an order on the categories.
+\end{itemize}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{images/fig-ale-bike-2d-1.png}
+	\end{center}
+	\caption{ALE-Plot}\label{fig:ALE-plots2d}
+\end{figure}
+2D Plot shows only second order effects. Not 100\% sure what that means. I think it is just the sum of the effects of both effects.
+Confusing otherwise, 2d shows that high humidity and low temperature increases bike rentals, but in the individual plots show that the opposite is the case.
+We can only see the interactions in the 2d ale plot. If two features do not interact the plot shows nothing.
+
+\paragraph{Additional Notes}
+\begin{itemize}
+	\item Still work when correlated.
+	\item Way faster to compute compared to PDPs
+	\item Interpretation only locally within the interval. NOT across intervals. Accumulations is convenience.
+	\item does not show heterogenity of features on different subsets like ICE/PDP
+	\item Second order effects plots annoying to interpret. It is not the total effect. Only the additional effect of the interaction.
+	\item Interpretation remains difficult when features are strongly correlated.
+\end{itemize}
+
+\paragraph{Rule of thumb PDP/ALE: }
+Use PDP if features are not correlated.
+If feature are correlated, but PDP and ALE show more or less the same curves, go for the simpler PDP interpretation.
+If feature are correlated and PDP and ALE differ, go with the ALE plot.
+
