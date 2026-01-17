@@ -208,7 +208,7 @@ Interaction between j and all other features:
 	\begin{center}
 		\includegraphics[width=0.8\linewidth]{images/fig-interaction-penguins-1.png}
 	\end{center}
-	\caption{}\label{fig:}
+	\caption{H-Statistic}\label{fig:h-stat}
 \end{figure}
 
 \paragraph{Notes}
@@ -216,4 +216,39 @@ Interaction between j and all other features:
 	\item Interpretation: 0 if there is no interaction, 1 if all the variance is explained by the sum of PD functions.
 	\item Meaningful interpretation: Share of variance that is explained by the interaction.
 	\item Computationally expensive
+\end{itemize}
+
+
+\subsection{Permutation Feature Importance}
+\textit{Shuffle one feature and observe the increase in model error.}
+
+\begin{itemize}
+	\item Important features will change the error strongly, unimportant ones not so much.
+	      If model relies on that feature predictions get worse.
+\end{itemize}
+
+\begin{enumerate}
+	\item Compute original error $e_{orig} = L(y, \hat f(X))$
+	\item For each feature $j \in \{1 \dots p\}$
+	      \begin{enumerate}
+		      \item Permute feature $j$ in the dataset randomly and generate $X_{perm}$
+		      \item Predict permuted data $\hat f(X_{perm})$
+		      \item Compute new error $e_{perm} = L(y, \hat f(X_{perm}))$
+		      \item Calculate permutation feature importance \\
+		            $FI_j = e_{perm} - e_{orig} $ When $L$ is on absolute scale (MSE, MAE etc) or $FI_j = \frac{e_{perm}}{e_{orig}}$ when metric is scale free (R², AUC, F1)
+		      \item Rank features by $FI_j$
+	      \end{enumerate}
+\end{enumerate}
+
+\paragraph{Notes}
+\begin{itemize}
+	\item As all permutation based methods unstable for strongly correlated features.
+	\item Computationally expensive for large datasets.
+	\item Should be computed on test data in most cases because train error might be low due to overfitting. But cases for both.
+	\item Train data: Which features does the model rely on.
+	\item Test data: Which features help the model generalize.
+	\item Interpretation: How much does the model suffer without this feature
+	\item interactions are automatically considered
+	\item But random permutations create unrealistic data points.
+	\item Loss based: Not ideal if you want to measure sensitivity or variability of predictions. (SHAP importance is variance based)
 \end{itemize}
