@@ -83,7 +83,7 @@ where
 
 \paragraph{Notes}
 \begin{itemize}
-	\item Sensitive to kernel with choice.
+	\item Sensitive to kernel width choice.
 	\item Neighborhood definition is pretty arbitrary.
 	\item Sampling features ignores correlations
 \end{itemize}
@@ -103,7 +103,7 @@ $\phi_j$, the Shapley value is the average marginal contribution of feature $j$ 
 \begin{itemize}
 	\item $S$: Subset of features that does not include $j$
 	\item $val_x(S)$: Prediction value using only features in $S$ (from the instance that we want to explain.)
-	\item $val_x(S \setminus{j})$: Prediction value using features in $S$ and $j$
+	\item $val_x(S  \bigcup \{j\})$: Prediction value using features in $S$ and $j$
 	\item $\frac{|S|!\left(p-|S|-1\right)!}{p!}$: Probability that $j$ can make that contribution. E.g. Number of ways, that $j$ can join a coalition of three other features.
 \end{itemize}
 
@@ -113,7 +113,7 @@ The $val_\textbf{x}(S)$ is the predicted outcome of the model minus the average 
 	\label{eq:shap-val-function}
 \end{equation}
 This essentially tells us to integrate over the probability distribution of the features not in the coalition $X_C$ and get the average prediction.
-
+The average prediction with only the features in the coalition.
 \begin{equation}
 	\sum_{j=1}^{p}\phi_j(\hat{f}) = \hat{f}(\mathbf{x})-\mathbb{E}[\hat{f}(\mathbf{X})]
 	\label{eq:sumofshapley}

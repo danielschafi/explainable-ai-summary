@@ -105,7 +105,7 @@ Linear Regression Models can be extended to handle some things that normal linea
 Use this if the output $y$ follows a Non-Gaussian distribution.
 For example if we want to predict counts. They follow a Poisson distribution (discrete values, $Var(y) = \E{y}$)
 \begin{equation}
-	g(\E{Y|x}) = \beta_0 + \beta_1 +  \dots + \beta_p x_p = x^T\beta
+	g(\E{Y|x}) = \beta_0 + \beta_1x_1 +  \dots + \beta_p x_p = x^T\beta
 	\label{eq:GLM-formula}
 \end{equation}
 It has three components
@@ -136,7 +136,7 @@ Of course this means, that we have to choose $\E{y}$ correctly, according to our
 \subsubsection{Feature Interactions}
 \begin{itemize}
 	\item Features interact with each other.
-	\item E.g. Nr of bike Rentals: Temperature and Working/Non-Working day. on days of people only rent bikes when its warm. On working days, people ride to work regardless of weather.
+	\item E.g. Nr of bike Rentals: Temperature and Working/Non-Working day. on days off people only rent bikes when its warm. On working days, people ride to work regardless of weather.
 	\item In LR we need to model these interactions explicitly. Add Interaction terms (Product of two features)
 	\item Modelling of interactions between different feature types:
 	      \begin{itemize}
@@ -154,14 +154,14 @@ But there is not always a linear relationship over the entire range. (Growth, sa
 E.g. 10 to 11 degrees, bike rentals increase, but 40 to 41 degrees they decline (to hot).
 \paragraph{Approaches to Non-Linearity}
 \begin{itemize}
-	\item Replace features with transformed versions. $log(x), \sqrt{x}, x²$
+	\item Replace features with transformed versions. $log(x), \sqrt{x}, x^2$
 	\item Discretizise categorical features into Bins/Quantiles (one hot encoded) $\to$ model becomes step function.
 	\item GAMs: Let model learn smooth non-linear functions of features.
 \end{itemize}
 
 \paragraph{GAMs}
 \begin{equation}
-	g(\Ewrp{Y}{y|x}) = \beta_-1 + f_1(x_1) + f_2(x_2) + \dots + f_p(x_p)
+	g(\Ewrp{Y}{y|x}) = \beta_{1} + f_1(x_1) + f_2(x_2) + \dots + f_p(x_p)
 	\label{eq:GAM}
 \end{equation}
 \begin{itemize}
