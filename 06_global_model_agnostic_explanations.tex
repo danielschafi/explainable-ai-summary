@@ -252,3 +252,39 @@ Interaction between j and all other features:
 	\item But random permutations create unrealistic data points.
 	\item Loss based: Not ideal if you want to measure sensitivity or variability of predictions. (SHAP importance is variance based)
 \end{itemize}
+
+
+\subsection{Global Surrogate Model}
+\textit{Train an interpretable model on the predictions of a black box model. Interpret the surrogate to interpret the black box}
+
+\begin{itemize}
+	\item $f$ black box, $g$ surrogate. g must be interpretable.
+	\item Decision trees or Linear Model etc.
+	\item Only need input $X$ and predictions $\hat y = f(X)$
+\end{itemize}
+
+
+\begin{enumerate}
+	\item Get predictions on dataset $\hat y = f(X)$
+	\item Train an interpretable model $g$ on outputs and inputs $(X, \hat y)$
+	\item Evaluate how well surrogate $g$ mimics $f$
+	\item Interpret $g$ to understand $f$
+\end{enumerate}
+
+\begin{equation}
+	R^2=1 - \frac{SSE}{SST} = 1 - \frac{\sum_{i=1}^n (\hat{y}_*^{(i)} - \hat{y}^{(i)})^2}{\sum_{i=1}^n (\hat{y}^{(i)} - \bar{\hat{y}})^2}
+	\label{eq:r²}
+\end{equation}
+\begin{itemize}
+	\item $\bar{\hat{y}}$ Mean of black box predictions
+	\item $\hat{y}_*^{(i)}$ Prediction of the surrogate model
+	\item $\hat{y}^{(i)}$ Prediction of black box
+\end{itemize}
+R² =1 surrogate is a close approximate to black box. R² = 0 surrogate fails to explain the black box.
+
+\paragraph{Notes}
+\begin{itemize}
+	\item Model behavior on average
+	\item Interpretations are valid for model not necessarily for reality.
+	\item Inherits all limitations of its own model class.
+\end{itemize}

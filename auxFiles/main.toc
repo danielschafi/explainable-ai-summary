@@ -1,0 +1,74 @@
+\contentsline {section}{\numberline {1}Introduction to Explainable AI}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Taxonomy}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Global vs Local interpretability}{2}{subsection.1.2}%
+\contentsline {paragraph}{Global Interpretability}{2}{section*.2}%
+\contentsline {paragraph}{Local Interpretability}{2}{section*.3}%
+\contentsline {subsection}{\numberline {1.3}Making explanations}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Linear Models}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Linear Regression}{2}{subsection.2.1}%
+\contentsline {paragraph}{Regression Output}{2}{table.caption.5}%
+\contentsline {paragraph}{Notes on Linear Regression}{2}{section*.6}%
+\contentsline {subsection}{\numberline {2.2}Lasso - Least Absolute Shrinkage and Selection Operator}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Logistic Regression}{2}{subsection.2.3}%
+\contentsline {paragraph}{Logistic / Sigmoid function}{2}{section*.7}%
+\contentsline {paragraph}{Logistic Model}{3}{section*.8}%
+\contentsline {subsection}{\numberline {2.4}Linear Regression Extensions}{3}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Generalized Linear Models}{3}{subsubsection.2.4.1}%
+\contentsline {paragraph}{Distributions and their canonical link functions}{3}{section*.9}%
+\contentsline {subsubsection}{\numberline {2.4.2}Feature Interactions}{3}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Generalized Additive Models}{3}{subsubsection.2.4.3}%
+\contentsline {paragraph}{Approaches to Non-Linearity}{3}{section*.10}%
+\contentsline {paragraph}{GAMs}{3}{section*.11}%
+\contentsline {section}{\numberline {3}Tree Models}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Decision Trees by CART algorithm}{4}{subsection.3.1}%
+\contentsline {paragraph}{Prediction}{4}{section*.12}%
+\contentsline {paragraph}{Splitting Regression}{4}{section*.13}%
+\contentsline {paragraph}{Splitting Classificaiton}{4}{section*.14}%
+\contentsline {paragraph}{Stop Criteria}{4}{section*.15}%
+\contentsline {paragraph}{Interpreting Decision Trees}{4}{section*.16}%
+\contentsline {paragraph}{Notes}{4}{section*.17}%
+\contentsline {subsection}{\numberline {3.2}Decision Rules}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}RulerFit}{4}{subsection.3.3}%
+\contentsline {paragraph}{Rule Generation}{4}{section*.18}%
+\contentsline {section}{\numberline {4}Mode Agnostic and Example based}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Model Agnostic}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Examples Based}{5}{subsection.4.2}%
+\contentsline {paragraph}{Types of examples}{5}{section*.19}%
+\contentsline {section}{\numberline {5}Local Model Agnostic}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}ICE - Individual Conditional Expectation }{5}{subsection.5.1}%
+\contentsline {paragraph}{ICE-Plot}{5}{figure.caption.21}%
+\contentsline {paragraph}{Centered ICE-Plot}{5}{section*.22}%
+\contentsline {paragraph}{Derivative ICE-Plot}{5}{section*.24}%
+\contentsline {subsection}{\numberline {5.2}LIME - Local Interpretable Model-Agnostic Explanations}{5}{subsection.5.2}%
+\contentsline {paragraph}{LIME}{6}{section*.26}%
+\contentsline {paragraph}{LIME Algorithm}{6}{section*.27}%
+\contentsline {paragraph}{Notes}{6}{section*.28}%
+\contentsline {subsection}{\numberline {5.3}Shapley values \& SHAP}{6}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Shapley values}{6}{subsubsection.5.3.1}%
+\contentsline {paragraph}{In Theory}{6}{section*.29}%
+\contentsline {paragraph}{In Practice}{6}{section*.30}%
+\contentsline {paragraph}{Notes}{7}{section*.31}%
+\contentsline {subsubsection}{\numberline {5.3.2}SHAP - SHapley Additive exPlanations}{7}{subsubsection.5.3.2}%
+\contentsline {paragraph}{Theory}{7}{section*.32}%
+\contentsline {paragraph}{KernelSHAP}{7}{section*.33}%
+\contentsline {paragraph}{TreeSHAP}{7}{section*.34}%
+\contentsline {paragraph}{Visualizations}{7}{section*.35}%
+\contentsline {paragraph}{SHAP Notes}{8}{section*.41}%
+\contentsline {section}{\numberline {6}Global Model Agnostic}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}PDP - Partial Dependency Plot}{8}{subsection.6.1}%
+\contentsline {paragraph}{Notes}{9}{section*.44}%
+\contentsline {subsubsection}{\numberline {6.1.1}PDP Feature Importance}{9}{subsubsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.2}ALE - Accumulated Local Effects}{9}{subsection.6.2}%
+\contentsline {paragraph}{M-Plots Marginal Plot}{9}{section*.45}%
+\contentsline {paragraph}{ALE-Plot}{9}{section*.47}%
+\contentsline {paragraph}{Notes}{10}{section*.49}%
+\contentsline {paragraph}{Additional Notes}{10}{section*.51}%
+\contentsline {paragraph}{Rule of thumb PDP/ALE: }{10}{section*.52}%
+\contentsline {subsection}{\numberline {6.3}Feature Interaction - H-Statistic}{10}{subsection.6.3}%
+\contentsline {paragraph}{Decomposition of Prediction}{10}{section*.53}%
+\contentsline {paragraph}{Friedman's H-Statistic}{10}{section*.54}%
+\contentsline {paragraph}{Notes}{11}{section*.56}%
+\contentsline {subsection}{\numberline {6.4}Permutation Feature Importance}{11}{subsection.6.4}%
+\contentsline {paragraph}{Notes}{11}{section*.57}%
+\contentsline {subsection}{\numberline {6.5}Global Surrogate Model}{11}{subsection.6.5}%
+\contentsline {paragraph}{Notes}{12}{section*.58}%
