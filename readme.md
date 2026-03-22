@@ -1,5 +1,7 @@
 # Explainable AI
 
+[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 Summary of the material taught in the explainable ai course @FHGR in autumn 2025.
 
 You can find the pdf [here](outFiles/main.pdf)
@@ -46,3 +48,7 @@ Here’s a short markdown list summarizing the main contents from the summary (m
   - Measuring feature importance (permutation approach)
   - Detecting feature interactions (H-statistic)
   - Surrogate models (interpreting black-box models using interpretable surrogates)
+
+## License
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
