@@ -4,6 +4,11 @@ Summary of the material taught in the explainable ai course @FHGR in autumn 2025
 
 You can find the pdf [here](outFiles/main.pdf)
 
+Course was based on [interpretable machine learning by Christoph Molnar](https://christophm.github.io/interpretable-ml-book/).
+You can find the full book on the link online, or buy it there.
+
+Some of the images were taken from that book.
+
 
 ## Contents
 
